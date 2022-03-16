@@ -16,11 +16,11 @@ public class Student {
 
     public Student()
     {
-    	
+    	super();
     }
     
     public Student(String firstname, String lastname, String university) {
-        // TODO: add your implementation here
+        super();
     	this.firstname = firstname;
     	this.lastname = lastname;
     	this.university = university;
@@ -33,7 +33,7 @@ public class Student {
     }
 
     public Student(String firstname, String lastname, String university, Double test1Score, Double test2Score, Double test3Score, Double test4Score) {
-        // TODO: add your implementation here
+    	super();
     	this.firstname = firstname;
     	this.lastname = lastname;
     	this.university = university;
@@ -46,25 +46,32 @@ public class Student {
     }
 
     public Double getFinalScore() {
-        // TODO: add your implementation here
     	return finalScore;
     }
 
-    public Grade getGrade() {
-        // TODO: add your implementation here  	
+    public Grade getGrade() { 	
         return grade;
     }
 
 	public String getUniversity() {
 		return university;
 	}
-
-	public void setUniversity(String university) {
-		this.university = university;
-	}
-
+	
 	public void setGrade(Grade grade) {
 		this.grade = grade;
+	}
+	
+	public Grade get_grade()
+	{
+		double f_score = this.getFinalScore();
+		if(f_score < 35)
+			return Grade.F;
+		else if(f_score >= 35 && f_score<50)
+			return Grade.C;
+		else if(f_score >= 50 && f_score<70)
+			return Grade.B;
+		else
+			return Grade.A;
 	}
 	
 	@Override
@@ -79,6 +86,5 @@ public class Student {
 		return this.firstname.equals(std.firstname)
 				&& this.lastname.equals(std.lastname)
 				&& this.university.equals(std.university);
-	}
-	
+	}	
 }
